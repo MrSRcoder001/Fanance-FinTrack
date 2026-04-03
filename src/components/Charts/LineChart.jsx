@@ -3,7 +3,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 const LineChart = ({ data }) => {
     return (
-        <div className="h-[400px] w-full bg-white dark:bg-slate-900 p-8 rounded-[32px] shadow-sm border border-slate-100 dark:border-slate-800/50">
+        <div className="h-[320px] sm:h-[400px] w-full bg-white dark:bg-slate-900 p-4 sm:p-8 rounded-[32px] shadow-sm border border-slate-100 dark:border-slate-800/50">
             <div className="flex items-center justify-between mb-8">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white">Balance Trend</h3>
                 <select className="bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800 border dark:border-slate-700/50 border-slate-200 rounded-xl px-4 py-1.5 text-xs font-bold text-slate-600 dark:text-slate-300 focus:ring-2 focus:ring-indigo-500/20 cursor-pointer outline-none transition-all shadow-sm">

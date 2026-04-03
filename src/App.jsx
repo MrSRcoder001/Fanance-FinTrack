@@ -35,8 +35,8 @@ function App() {
         />
       )}
 
-      <main className="flex-1 lg:ml-72 p-4 sm:p-6 lg:p-10 min-h-screen overflow-x-hidden w-full">
-        <div className="max-w-[1600px] mx-auto">
+      <main className="flex-1 lg:ml-72 p-4 sm:p-6 lg:p-10 min-h-screen overflow-x-hidden w-full transition-all duration-300">
+        <div className="max-w-[1600px] mx-auto w-full">
           {renderPage()}
         </div>
       </main>
