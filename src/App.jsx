@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Transactions from './pages/Transactions';
 import Insights from './pages/Insights';
+import TransactionModal from './components/TransactionModal';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard');
@@ -39,6 +40,8 @@ function App() {
           {renderPage()}
         </div>
       </main>
+
+      <TransactionModal />
     </div>
   );
 }

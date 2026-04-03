@@ -20,6 +20,8 @@ export const AppProvider = ({ children }) => {
         sort: "date-desc"
     });
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [editingTransaction, setEditingTransaction] = useState(null);
 
     useEffect(() => {
         localStorage.setItem("transactions", JSON.stringify(transactions));
@@ -49,6 +51,10 @@ export const AppProvider = ({ children }) => {
         setTransactions(transactions.filter(t => t.id !== id));
     };
 
+    const updateTransaction = (id, updatedData) => {
+        setTransactions(transactions.map(t => t.id === id ? { ...t, ...updatedData } : t));
+    };
+
     const updateFilters = (newFilters) => {
         setFilters(prev => ({ ...prev, ...newFilters }));
     };
@@ -65,10 +71,15 @@ export const AppProvider = ({ children }) => {
         updateFilters,
         addTransaction,
         deleteTransaction,
+        updateTransaction,
         theme,
         toggleTheme,
         isSidebarOpen,
-        setIsSidebarOpen
+        setIsSidebarOpen,
+        isModalOpen,
+        setIsModalOpen,
+        editingTransaction,
+        setEditingTransaction
     };
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

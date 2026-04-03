@@ -3,7 +3,7 @@ import { useApp } from '../context/AppContext';
 import { Trash2, Edit, ArrowUpRight, ArrowDownRight } from 'lucide-react';
 
 const TransactionTable = ({ limit, hideHeader = false }) => {
-    const { transactions, role, deleteTransaction, filters } = useApp();
+    const { transactions, role, deleteTransaction, filters, setEditingTransaction, setIsModalOpen } = useApp();
 
     const filteredTransactions = transactions
         .filter(t => {
@@ -76,16 +76,24 @@ const TransactionTable = ({ limit, hideHeader = false }) => {
                                     </td>
                                     <td className="p-6 text-right">
                                         <div className="flex justify-end space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <button className="p-2 text-slate-400 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all">
-                                                <Edit size={18} strokeWidth={2.5} />
-                                            </button>
                                             {role === 'Admin' && (
-                                                <button
-                                                    onClick={() => deleteTransaction(t.id)}
-                                                    className="p-2 text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-900/20 rounded-xl transition-all"
-                                                >
-                                                    <Trash2 size={18} strokeWidth={2.5} />
-                                                </button>
+                                                <>
+                                                    <button
+                                                        onClick={() => {
+                                                            setEditingTransaction(t);
+                                                            setIsModalOpen(true);
+                                                        }}
+                                                        className="p-2 text-slate-400 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-all"
+                                                    >
+                                                        <Edit size={18} strokeWidth={2.5} />
+                                                    </button>
+                                                    <button
+                                                        onClick={() => deleteTransaction(t.id)}
+                                                        className="p-2 text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-900/20 rounded-xl transition-all"
+                                                    >
+                                                        <Trash2 size={18} strokeWidth={2.5} />
+                                                    </button>
+                                                </>
                                             )}
                                         </div>
                                     </td>
